@@ -1,0 +1,12 @@
+Version 0.1.0
+Pattern: Chain4Action
+- NEW: support undo and redo function. (ShanGuanDa)
+
+Future:------------------------------------
+
+Pattern: Chain4Action
+- ENH: enrich sample. (ShanGuanDa)
+- NEW: support cut and rollback function. (ShanGuanDa)
+- NEW: support set maximun count of undo's step function. (ShanGuanDa)
+- NEW: support erase empty step function. (ShanGuanDa)
+- NEW: support erase all step of actor be indicated by ActorId. (ShanGuanDa)
