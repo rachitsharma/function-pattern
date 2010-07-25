@@ -1,0 +1,12 @@
+Version 0.1.0
+Pattern: Chain4Action
+- NEW: 提供Undo与Redo功能。（单冠达）
+
+Future:------------------------------------
+
+Pattern: Chain4Action
+- ENH: 丰富示例。（单冠达）
+- NEW: 提供cut与rollback功能。（单冠达）
+- NEW: 提供设置最大undo次数。（单冠达）
+- NEW: 移除为空的操作步。（单冠达）
+- NEW: 按照指定操作者标示移除所有此操作者的操作步。（单冠达）
