@@ -1,0 +1,12 @@
+Pattern: Chain4Action ======================================================
+Done:--------------------------------------
+- NEW: support undo and redo function.
+- NEW: support operated by some of actors.
+
+Todo:------------------------------------
+
+- ENH: enrich sample. (ShanGuanDa)
+- NEW: support cut and rollback function.
+- NEW: support set maximun count of undo's step function.
+- NEW: support erase empty step function.
+- NEW: support erase all step of actor be indicated by ActorId.
