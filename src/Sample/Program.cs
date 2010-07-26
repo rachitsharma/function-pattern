@@ -38,7 +38,7 @@ namespace Sample
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TextSampleForm());
+            Application.Run(new SampleViewForm());
         }
     }
 }

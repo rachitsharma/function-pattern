@@ -42,7 +42,7 @@ namespace Sample
             m_textbox = textBox;
         }
 
-        public override ActorId ActorId
+        protected override ActorId ActorIdCore
         {
             get
             {
@@ -50,19 +50,19 @@ namespace Sample
             }
         }
 
-        public override ActionRecord StartRecord()
+        protected override ActionRecord StartRecordCore()
         {
             m_currentRecord = new TextEditRecord(this, m_textbox);
             m_currentRecord.SetOldText(CurrentText);
             return m_currentRecord;
         }
 
-        public override void EndRecord()
+        protected override void EndRecordCore()
         {
             m_currentRecord = null;
         }
 
-        public override ActionRecord GenerateEmptyRecord()
+        protected override ActionRecord GenerateEmptyRecordCore()
         {
             var empty = new TextEditRecord(this, m_textbox);
             empty.ToEmpty();
@@ -75,11 +75,6 @@ namespace Sample
             {
                 m_currentRecord.SetNewText(strText);
             }
-        }
-
-        public bool CheckChanged()
-        {
-            return m_textbox.Text != CurrentText;
         }
     }
 }
