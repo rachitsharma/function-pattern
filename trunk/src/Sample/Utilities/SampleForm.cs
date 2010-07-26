@@ -23,51 +23,20 @@ THE SOFTWARE.
 #endregion
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
-using FunctionPattern.Chain4Action;
 using System.Windows.Forms;
 
 namespace Sample
 {
-    class TextEditRecord : ActionRecord
+    public partial class SampleForm : Form
     {
-        string m_newText;
-        string m_oldText;
-        TextBox m_textBox;
-
-        public TextEditRecord(TextEditRecorder myRecoder, TextBox textBox)
-            : base(myRecoder)
+        public SampleForm()
         {
-            m_textBox = textBox;
-        }
-
-        protected override void ToEmptyCore()
-        {
-            IsEmptyCore = true;
-        }
-
-        protected override void RedoCore()
-        {
-            if (IsEmpty) return;
-            m_textBox.Text = m_newText;
-        }
-
-        protected override void UndoCore()
-        {
-            if (IsEmpty) return;
-            m_textBox.Text = m_oldText;
-        }
-
-        public void SetOldText(string strOldText)
-        {
-            m_oldText = strOldText;
-        }
-
-        public void SetNewText(string strNewText)
-        {
-            IsEmptyCore = false;
-            m_newText = strNewText;
+            InitializeComponent();
         }
     }
 }

@@ -71,9 +71,9 @@
     <Compile Include="Testor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FunctionPattern.Chain4Action\FunctionPattern.Chain4Action.csproj">
+    <ProjectReference Include="..\FunctionPattern\FunctionPattern.csproj">
       <Project>{9417C96D-1ADA-43E0-93F2-D81FC12F0BFC}</Project>
-      <Name>FunctionPattern.Chain4Action</Name>
+      <Name>FunctionPattern</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -23,17 +23,17 @@ THE SOFTWARE.
 #endregion
 namespace Sample
 {
-    partial class TextSampleForm
+    partial class MultiActorSampleForm
     {
         /// <summary>
-        /// 必需的设计器变量。
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// 清理所有正在使用的资源。
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -43,61 +43,69 @@ namespace Sample
             base.Dispose(disposing);
         }
 
-        #region Windows 窗体设计器生成的代码
+        #region Windows Form Designer generated code
 
         /// <summary>
-        /// 设计器支持所需的方法 - 不要
-        /// 使用代码编辑器修改此方法的内容。
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.buttonUndo = new System.Windows.Forms.Button();
             this.buttonRedo = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // buttonUndo
-            // 
-            this.buttonUndo.Location = new System.Drawing.Point(324, 12);
-            this.buttonUndo.Name = "buttonUndo";
-            this.buttonUndo.Size = new System.Drawing.Size(75, 23);
-            this.buttonUndo.TabIndex = 0;
-            this.buttonUndo.Text = "Undo";
-            this.buttonUndo.UseVisualStyleBackColor = true;
-            this.buttonUndo.Click += new System.EventHandler(this.buttonUndo_Click);
-            // 
-            // buttonRedo
-            // 
-            this.buttonRedo.Location = new System.Drawing.Point(405, 12);
-            this.buttonRedo.Name = "buttonRedo";
-            this.buttonRedo.Size = new System.Drawing.Size(75, 23);
-            this.buttonRedo.TabIndex = 1;
-            this.buttonRedo.Text = "Redo";
-            this.buttonRedo.UseVisualStyleBackColor = true;
-            this.buttonRedo.Click += new System.EventHandler(this.buttonRedo_Click);
             // 
             // textBox1
             // 
-            this.textBox1.AcceptsReturn = true;
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
+            this.textBox1.Location = new System.Drawing.Point(13, 13);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(306, 241);
-            this.textBox1.TabIndex = 2;
+            this.textBox1.Size = new System.Drawing.Size(177, 241);
+            this.textBox1.TabIndex = 0;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // TextSampleForm
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(196, 12);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(177, 241);
+            this.textBox2.TabIndex = 0;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // buttonUndo
+            // 
+            this.buttonUndo.Location = new System.Drawing.Point(380, 13);
+            this.buttonUndo.Name = "buttonUndo";
+            this.buttonUndo.Size = new System.Drawing.Size(75, 23);
+            this.buttonUndo.TabIndex = 1;
+            this.buttonUndo.Text = "Undo";
+            this.buttonUndo.UseVisualStyleBackColor = true;
+            this.buttonUndo.Click += new System.EventHandler(this.OnUndo);
+            // 
+            // buttonRedo
+            // 
+            this.buttonRedo.Location = new System.Drawing.Point(462, 13);
+            this.buttonRedo.Name = "buttonRedo";
+            this.buttonRedo.Size = new System.Drawing.Size(75, 23);
+            this.buttonRedo.TabIndex = 2;
+            this.buttonRedo.Text = "Redo";
+            this.buttonRedo.UseVisualStyleBackColor = true;
+            this.buttonRedo.Click += new System.EventHandler(this.OnRedo);
+            // 
+            // MultiActorSampleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 266);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(549, 266);
             this.Controls.Add(this.buttonRedo);
             this.Controls.Add(this.buttonUndo);
-            this.Name = "TextSampleForm";
-            this.Text = "TextEditSample";
-            this.Load += new System.EventHandler(this.TextSampleForm_Load);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox1);
+            this.Name = "MultiActorSampleForm";
+            this.Text = "MultiActorSampleForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -105,9 +113,9 @@ namespace Sample
 
         #endregion
 
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button buttonUndo;
         private System.Windows.Forms.Button buttonRedo;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }
-

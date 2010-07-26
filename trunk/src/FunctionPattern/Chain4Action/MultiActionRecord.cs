@@ -44,7 +44,7 @@ namespace FunctionPattern.Chain4Action
             return m_recordCollection.Single(record => record.ActorId.Match(actorId));
         }
 
-        public override bool IsEmpty
+        protected override bool IsEmptyCore
         {
             get
             {
@@ -52,17 +52,17 @@ namespace FunctionPattern.Chain4Action
             }
         }
 
-        public override void ToEmpty()
+        protected override void ToEmptyCore()
         {
             m_recordCollection.Do(record => record.ToEmpty());
         }
 
-        public override void Redo()
+        protected override void RedoCore()
         {
             m_recordCollection.Do(record => record.Redo());
         }
 
-        public override void Undo()
+        protected override void UndoCore()
         {
             m_recordCollection.Do(record => record.Undo());
         }
@@ -97,22 +97,22 @@ namespace FunctionPattern.Chain4Action
 
         class MultiActionRecorder : ActionRecorder
         {
-            public override ActorId ActorId
+            protected override ActorId ActorIdCore
             {
                 get { return ActorId.Generate<MultiActionRecorder>(); }
             }
 
-            public override ActionRecord StartRecord()
+            protected override ActionRecord StartRecordCore()
             {
                 throw new NotImplementedException();
             }
 
-            public override void EndRecord()
+            protected override void EndRecordCore()
             {
                 throw new NotImplementedException();
             }
 
-            public override ActionRecord GenerateEmptyRecord()
+            protected override ActionRecord GenerateEmptyRecordCore()
             {
                 throw new NotImplementedException();
             }

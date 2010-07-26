@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{C7F3FD89-00BF-462B-AA34-EB920E78946A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chain4Action", "Chain4Action", "{278C627F-3B6E-4C25-AF4B-1DA35DEFD48F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csproj", "{26F38A8A-EA28-4C8B-9CC5-67391032E2D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionPattern.Chain4Action", "FunctionPattern.Chain4Action\FunctionPattern.Chain4Action.csproj", "{9417C96D-1ADA-43E0-93F2-D81FC12F0BFC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionPattern", "FunctionPattern\FunctionPattern.csproj", "{9417C96D-1ADA-43E0-93F2-D81FC12F0BFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,10 +28,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{C7F3FD89-00BF-462B-AA34-EB920E78946A} = {278C627F-3B6E-4C25-AF4B-1DA35DEFD48F}
-		{26F38A8A-EA28-4C8B-9CC5-67391032E2D6} = {278C627F-3B6E-4C25-AF4B-1DA35DEFD48F}
-		{9417C96D-1ADA-43E0-93F2-D81FC12F0BFC} = {278C627F-3B6E-4C25-AF4B-1DA35DEFD48F}
 	EndGlobalSection
 EndGlobal

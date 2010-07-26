@@ -28,14 +28,64 @@ using System.Text;
 
 namespace FunctionPattern.Chain4Action
 {
-    public abstract class ActionRecorder
+    public abstract class ActionRecord
     {
-        public abstract ActorId ActorId { get; }
+        public ActionRecorder MyRecorder { private set; get; }
 
-        public abstract ActionRecord StartRecord();
+        public bool IsEmpty
+        {
+            get
+            {
+                return IsEmptyCore;
+            }
+        }
 
-        public abstract void EndRecord();
+        public ActorId ActorId
+        {
+            get
+            {
+                return MyRecorder.ActorId;
+            }
+        }
 
-        public abstract ActionRecord GenerateEmptyRecord();
+        protected ActionRecord(ActionRecorder myRecorder)
+        {
+            if (myRecorder == null) throw new ArgumentNullException("myRecorder");
+            MyRecorder = myRecorder;
+            IsEmptyCore = true;
+        }
+
+        protected virtual bool IsEmptyCore { set; get; }
+
+        protected abstract void ToEmptyCore();
+
+        protected abstract void RedoCore();
+
+        protected abstract void UndoCore();
+
+        public void ToEmpty()
+        {
+            if (!IsEmpty)
+            {
+                ToEmptyCore();
+            }
+        }
+
+        public void Redo()
+        {
+            if (!IsEmpty)
+            {
+                RedoCore();
+            }
+        }
+
+        public void Undo()
+        {
+            if (!IsEmpty)
+            {
+                UndoCore();
+            }
+        }
+
     }
 }

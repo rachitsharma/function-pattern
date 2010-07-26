@@ -33,44 +33,41 @@ using FunctionPattern.Chain4Action;
 
 namespace Sample
 {
-    public partial class TextSampleForm : SampleForm
+    public partial class MultiActorSampleForm : SampleForm
     {
         ChainManager m_chainManager;
-        TextEditRecorder m_recorder;
+        TextEditRecorder m_textEdiorRecorder1;
+        TextEditRecorder m_textEdiorRecorder2;
 
-        public TextSampleForm()
+        public MultiActorSampleForm()
         {
             InitializeComponent();
 
-            m_recorder = new TextEditRecorder(textBox1);
+            m_textEdiorRecorder1 = new TextEditRecorder(textBox1);
+            m_textEdiorRecorder2 = new TextEditRecorder(textBox2);
 
-            ChainManager.IniParams iniParams = new ChainManager.IniParams();
-            iniParams.RecordCollection.Add(m_recorder);
-            iniParams.DontRecordWhenStatusError = true;
-            m_chainManager = new ChainManager(iniParams);
+            ChainManager.IniParams param = new ChainManager.IniParams()
+            {
+                DontRecordWhenStatusError = true,
+            };
+
+            param.RecordCollection.Add(m_textEdiorRecorder1);
+            param.RecordCollection.Add(m_textEdiorRecorder2);
+
+            m_chainManager = new ChainManager(param);
+            CheckUndoRedoStatus();
         }
 
-        private void buttonUndo_Click(object sender, EventArgs e)
+        private void OnUndo(object sender, EventArgs e)
         {
             m_chainManager.Undo();
             CheckUndoRedoStatus();
         }
 
-        private void buttonRedo_Click(object sender, EventArgs e)
+        private void OnRedo(object sender, EventArgs e)
         {
             m_chainManager.Redo();
             CheckUndoRedoStatus();
-        }
-
-        private void TextSampleForm_Load(object sender, EventArgs e)
-        {
-            CheckUndoRedoStatus();
-        }
-
-        void CheckUndoRedoStatus()
-        {
-            buttonUndo.Enabled = m_chainManager.CanUndo;
-            buttonRedo.Enabled = m_chainManager.CanRedo;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -78,13 +75,33 @@ namespace Sample
             if (m_chainManager.ActStatus == ActStatus.None)
             {
                 m_chainManager.StartRecord();
-                m_recorder.SetText(textBox1.Text);
+                m_textEdiorRecorder1.SetText(textBox1.Text);
                 m_chainManager.EndRecord();
 
                 CheckUndoRedoStatus();
             }
 
-            m_recorder.CurrentText = textBox1.Text;
+            m_textEdiorRecorder1.CurrentText = textBox1.Text;
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            if (m_chainManager.ActStatus == ActStatus.None)
+            {
+                m_chainManager.StartRecord();
+                m_textEdiorRecorder2.SetText(textBox2.Text);
+                m_chainManager.EndRecord();
+
+                CheckUndoRedoStatus();
+            }
+
+            m_textEdiorRecorder2.CurrentText = textBox2.Text;
+        }
+
+        void CheckUndoRedoStatus()
+        {
+            buttonUndo.Enabled = m_chainManager.CanUndo;
+            buttonRedo.Enabled = m_chainManager.CanRedo;
         }
     }
 }

@@ -8,8 +8,8 @@
     <ProjectGuid>{9417C96D-1ADA-43E0-93F2-D81FC12F0BFC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FunctionPattern.Chain4Action</RootNamespace>
-    <AssemblyName>FunctionPattern.Chain4Action</AssemblyName>
+    <RootNamespace>FunctionPattern</RootNamespace>
+    <AssemblyName>FunctionPattern</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -45,14 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActionRecord.cs" />
-    <Compile Include="ActionRecorder.cs" />
-    <Compile Include="ActorIdGenerator.cs" />
-    <Compile Include="ActStatus.cs" />
-    <Compile Include="ChainManager.cs" />
-    <Compile Include="MultiActionRecord.cs" />
+    <Compile Include="Chain4Action\ActionRecord.cs" />
+    <Compile Include="Chain4Action\ActionRecorder.cs" />
+    <Compile Include="Chain4Action\ActorIdGenerator.cs" />
+    <Compile Include="Chain4Action\ActStatus.cs" />
+    <Compile Include="Chain4Action\ChainManager.cs" />
+    <Compile Include="Chain4Action\MultiActionRecord.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ActorId.cs" />
+    <Compile Include="Chain4Action\ActorId.cs" />
     <Compile Include="Utilities\LinqHelper.cs" />
   </ItemGroup>
   <ItemGroup>

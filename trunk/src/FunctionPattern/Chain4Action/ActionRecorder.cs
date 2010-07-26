@@ -28,31 +28,37 @@ using System.Text;
 
 namespace FunctionPattern.Chain4Action
 {
-    public abstract class ActionRecord
+    public abstract class ActionRecorder
     {
-        public ActionRecorder MyRecorder { private set; get; }
+        protected abstract ActorId ActorIdCore { get; }
 
-        protected ActionRecord(ActionRecorder myRecorder)
-        {
-            if (myRecorder == null) throw new ArgumentNullException("myRecorder");
-            MyRecorder = myRecorder;
-        }
+        protected abstract ActionRecord StartRecordCore();
 
-        public abstract bool IsEmpty { get; }
+        protected abstract void EndRecordCore();
+
+        protected abstract ActionRecord GenerateEmptyRecordCore();
 
         public ActorId ActorId
         {
             get
             {
-                return MyRecorder.ActorId;
+                return ActorIdCore;
             }
         }
 
-        public abstract void ToEmpty();
+        public ActionRecord StartRecord()
+        {
+            return StartRecordCore();
+        }
 
-        public abstract void Redo();
+        public void EndRecord()
+        {
+            EndRecordCore();
+        }
 
-        public abstract void Undo();
-
+        public ActionRecord GenerateEmptyRecord()
+        {
+            return GenerateEmptyRecordCore();
+        }
     }
 }

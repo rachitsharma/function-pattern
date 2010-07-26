@@ -48,6 +48,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MultiActorSampleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MultiActorSampleForm.Designer.cs">
+      <DependentUpon>MultiActorSampleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\SampleViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\SampleViewForm.Designer.cs">
+      <DependentUpon>SampleViewForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TextEditRecord.cs" />
     <Compile Include="TextEditRecorder.cs" />
     <Compile Include="TextSampleForm.cs">
@@ -58,13 +70,22 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MultiActorSampleForm.resx">
+      <DependentUpon>MultiActorSampleForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\SampleViewForm.resx">
+      <DependentUpon>SampleViewForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TextSampleForm.resx">
       <DependentUpon>TextSampleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utilities\SampleForm.resx">
+      <DependentUpon>SampleForm.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -79,11 +100,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Utilities\SampleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utilities\SampleForm.Designer.cs">
+      <DependentUpon>SampleForm.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FunctionPattern.Chain4Action\FunctionPattern.Chain4Action.csproj">
+    <ProjectReference Include="..\FunctionPattern\FunctionPattern.csproj">
       <Project>{9417C96D-1ADA-43E0-93F2-D81FC12F0BFC}</Project>
-      <Name>FunctionPattern.Chain4Action</Name>
+      <Name>FunctionPattern</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
