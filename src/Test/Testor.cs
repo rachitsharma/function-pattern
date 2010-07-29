@@ -41,17 +41,7 @@ namespace Test
                 throw new NotImplementedException();
             }
 
-            if (objId1.Match(objId2) == false || objId2.Match(objId1) == false)
-            {
-                throw new NotImplementedException();
-            }
-
             var intId1 = ActorId.Generate<int>();
-
-            if (objId1.Match(intId1) == true || intId1.Match(objId1) == true)
-            {
-                throw new NotImplementedException();
-            }
         }
     }
 }

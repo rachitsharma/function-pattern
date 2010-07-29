@@ -34,7 +34,20 @@ namespace FunctionPattern.Chain4Action
         {
         }
 
-        public abstract bool Match(ActorId other);
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public static bool operator == (ActorId left, ActorId right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(ActorId left, ActorId right)
+        {
+            return !left.Equals(right);
+        }
 
         public static ActorId Generate<TActorType>()
         {

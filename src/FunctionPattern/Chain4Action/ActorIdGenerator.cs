@@ -44,12 +44,6 @@ namespace FunctionPattern.Chain4Action
             {
                 return ActorId.GetHashCode();
             }
-
-            public override bool Match(ActorId other)
-            {
-                if (other == null) return false;
-                return other is ActorIdBase<TSubClass>;
-            }
         }
     }
 }

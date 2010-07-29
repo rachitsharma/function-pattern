@@ -40,11 +40,11 @@ namespace FunctionPattern.Chain4Action
             }
         }
 
-        public ActorId ActorId
+        public object RecorderId
         {
             get
             {
-                return MyRecorder.ActorId;
+                return MyRecorder.RecorderId;
             }
         }
 

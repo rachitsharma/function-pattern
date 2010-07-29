@@ -42,7 +42,7 @@ namespace Sample
             m_textbox = textBox;
         }
 
-        protected override ActorId ActorIdCore
+        protected override object RecorderIdCore
         {
             get
             {
