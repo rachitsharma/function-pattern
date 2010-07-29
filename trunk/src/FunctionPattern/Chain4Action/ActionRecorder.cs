@@ -30,7 +30,7 @@ namespace FunctionPattern.Chain4Action
 {
     public abstract class ActionRecorder
     {
-        protected abstract ActorId ActorIdCore { get; }
+        protected abstract object RecorderIdCore { get; }
 
         protected abstract ActionRecord StartRecordCore();
 
@@ -38,11 +38,11 @@ namespace FunctionPattern.Chain4Action
 
         protected abstract ActionRecord GenerateEmptyRecordCore();
 
-        public ActorId ActorId
+        public object RecorderId
         {
             get
             {
-                return ActorIdCore;
+                return RecorderIdCore;
             }
         }
 

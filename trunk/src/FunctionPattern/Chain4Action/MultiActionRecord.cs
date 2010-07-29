@@ -41,7 +41,7 @@ namespace FunctionPattern.Chain4Action
 
         ActionRecord FindRecord(ActorId actorId)
         {
-            return m_recordCollection.Single(record => record.ActorId.Match(actorId));
+            return m_recordCollection.Single(record => record.RecorderId.Equals(actorId));
         }
 
         protected override bool IsEmptyCore
@@ -69,7 +69,7 @@ namespace FunctionPattern.Chain4Action
 
         public bool HasRecord(ActorId actorId)
         {
-            return m_recordCollection.Any(record => record.ActorId.Match(actorId));
+            return m_recordCollection.Any(record => record.RecorderId.Equals(actorId));
         }
 
         public void ToEmpty(ActorId actorId)
@@ -97,7 +97,7 @@ namespace FunctionPattern.Chain4Action
 
         class MultiActionRecorder : ActionRecorder
         {
-            protected override ActorId ActorIdCore
+            protected override object RecorderIdCore
             {
                 get { return ActorId.Generate<MultiActionRecorder>(); }
             }
