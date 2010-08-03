@@ -52,7 +52,7 @@ namespace Sample
 
         protected override ActionRecord StartRecordCore()
         {
-            m_currentRecord = new TextEditRecord(this, m_textbox);
+            m_currentRecord = new TextEditRecord(m_textbox);
             m_currentRecord.SetOldText(CurrentText);
             return m_currentRecord;
         }
@@ -62,9 +62,14 @@ namespace Sample
             m_currentRecord = null;
         }
 
+        protected override void CutRecordCore()
+        {
+            m_currentRecord = null;
+        }
+
         protected override ActionRecord GenerateEmptyRecordCore()
         {
-            var empty = new TextEditRecord(this, m_textbox);
+            var empty = new TextEditRecord(m_textbox);
             empty.ToEmpty();
             return empty;
         }

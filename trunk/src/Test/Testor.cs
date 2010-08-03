@@ -43,5 +43,81 @@ namespace Test
 
             var intId1 = ActorId.Generate<int>();
         }
+
+        public void TestChainManager()
+        {
+            List<int> lst = new List<int>();
+
+            TestRecorder trr = new TestRecorder(lst);
+            ChainManager.IniParams p = new ChainManager.IniParams();
+            p.RecordCollection.Add(trr);
+            ChainManager cm = new ChainManager(p);
+
+            // Start End Test
+            cm.StartRecord();
+
+            trr.Add(1);
+            trr.Add(2);
+
+            cm.EndRecord();
+
+            List<int> result1 = new List<int> { 1, 2 };
+
+            if (result1.SequenceEqual(lst) == false)
+            {
+                throw new NotImplementedException();
+            }
+
+            cm.StartRecord();
+
+            trr.Add(3);
+            trr.Add(4);
+
+            cm.EndRecord();
+
+            List<int> result2 = new List<int> { 1, 2, 3, 4 };
+
+            if (result2.SequenceEqual(lst) == false)
+            {
+                throw new NotImplementedException();
+            }
+
+            // Undo Test
+            cm.Undo();
+
+            if (result1.SequenceEqual(lst) == false)
+            {
+                throw new NotImplementedException();
+            }
+
+            // Redo Test
+            cm.Redo();
+
+            if (result2.SequenceEqual(lst) == false)
+            {
+                throw new NotImplementedException();
+            }
+
+            // Cut Test
+            cm.StartRecord();
+
+            trr.Add(3);
+            trr.Add(4);
+
+            cm.CutRecord();
+
+            if (result2.SequenceEqual(lst) == false)
+            {
+                throw new NotImplementedException();
+            }
+
+            // Rollback Test
+            cm.Rollback();
+
+            if (result1.SequenceEqual(lst) == false)
+            {
+                throw new NotImplementedException();
+            }
+        }
     }
 }

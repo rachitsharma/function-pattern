@@ -59,6 +59,14 @@ namespace FunctionPattern.Chain4Action
             }
         }
 
+        public bool CanRollback
+        {
+            get
+            {
+                return CanUndo;
+            }
+        }
+
         #region Constructor
         public ChainManager(IniParams iniParams)
         {
@@ -120,6 +128,23 @@ namespace FunctionPattern.Chain4Action
             ActStatus = ActStatus.None;
         }
 
+        public void CutRecord()
+        {
+            if (ActStatus != ActStatus.Acting)
+            {
+                if (DontRecordWhenStatusError) return;
+                throw new InvalidOperationException();
+            }
+
+            if (CurrentRecord == null) throw new InvalidOperationException();
+
+            RecorderCollection.Do(recorder => recorder.CutRecord());
+
+            CurrentRecord = null;
+
+            ActStatus = ActStatus.None;
+        }
+
         public void Undo()
         {
             if (ActStatus != ActStatus.None)
@@ -152,6 +177,27 @@ namespace FunctionPattern.Chain4Action
             record.Redo();
             m_currentIndex++;
 
+            ActStatus = ActStatus.None;
+        }
+
+        public void Rollback()
+        {
+            if (ActStatus != ActStatus.None)
+            {
+                if (DontRecordWhenStatusError) return;
+                throw new InvalidOperationException();
+            }
+
+            if (CanRollback == false) throw new InvalidOperationException();
+
+            ActStatus = ActStatus.Rollbacking;
+
+            m_currentIndex--;
+            var record = RecordCollection[m_currentIndex];
+            record.Undo();
+
+            m_tailIndex = m_currentIndex;
+            RemoveExcrescentRecords();
             ActStatus = ActStatus.None;
         }
 

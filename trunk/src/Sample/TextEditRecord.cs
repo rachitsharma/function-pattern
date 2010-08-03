@@ -36,15 +36,14 @@ namespace Sample
         string m_oldText;
         TextBox m_textBox;
 
-        public TextEditRecord(TextEditRecorder myRecoder, TextBox textBox)
-            : base(myRecoder)
+        public TextEditRecord(TextBox textBox)
         {
             m_textBox = textBox;
         }
 
         protected override void ToEmptyCore()
         {
-            IsEmptyCore = true;
+            IsEmpty = true;
         }
 
         protected override void RedoCore()
@@ -66,7 +65,7 @@ namespace Sample
 
         public void SetNewText(string strNewText)
         {
-            IsEmptyCore = false;
+            IsEmpty = false;
             m_newText = strNewText;
         }
     }

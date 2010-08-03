@@ -43,6 +43,7 @@ namespace Test
 
             Testor testor = new Testor();
             testor.TestActorId();
+            testor.TestChainManager();
         }
     }
 }
