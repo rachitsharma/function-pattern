@@ -30,11 +30,15 @@ namespace FunctionPattern.Chain4Action
 {
     public abstract class ActionRecorder
     {
+        protected ActionRecord CurrentBaseRecord { set; get; }
+
         protected abstract object RecorderIdCore { get; }
 
         protected abstract ActionRecord StartRecordCore();
 
         protected abstract void EndRecordCore();
+
+        protected abstract void CutRecordCore();
 
         protected abstract ActionRecord GenerateEmptyRecordCore();
 
@@ -48,12 +52,21 @@ namespace FunctionPattern.Chain4Action
 
         public ActionRecord StartRecord()
         {
-            return StartRecordCore();
+            CurrentBaseRecord = StartRecordCore();
+            CurrentBaseRecord.MyRecorder = this;
+            return CurrentBaseRecord;
         }
 
         public void EndRecord()
         {
             EndRecordCore();
+            CurrentBaseRecord = null;
+        }
+
+        public void CutRecord()
+        {
+            CutRecordCore();
+            CurrentBaseRecord = null;
         }
 
         public ActionRecord GenerateEmptyRecord()

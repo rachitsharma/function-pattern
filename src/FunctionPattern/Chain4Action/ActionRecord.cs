@@ -30,15 +30,9 @@ namespace FunctionPattern.Chain4Action
 {
     public abstract class ActionRecord
     {
-        public ActionRecorder MyRecorder { private set; get; }
+        public ActionRecorder MyRecorder { internal set; get; }
 
-        public bool IsEmpty
-        {
-            get
-            {
-                return IsEmptyCore;
-            }
-        }
+        public virtual bool IsEmpty { protected set; get; }
 
         public object RecorderId
         {
@@ -48,14 +42,10 @@ namespace FunctionPattern.Chain4Action
             }
         }
 
-        protected ActionRecord(ActionRecorder myRecorder)
+        protected ActionRecord()
         {
-            if (myRecorder == null) throw new ArgumentNullException("myRecorder");
-            MyRecorder = myRecorder;
-            IsEmptyCore = true;
+            IsEmpty = true;
         }
-
-        protected virtual bool IsEmptyCore { set; get; }
 
         protected abstract void ToEmptyCore();
 
@@ -86,6 +76,5 @@ namespace FunctionPattern.Chain4Action
                 UndoCore();
             }
         }
-
     }
 }

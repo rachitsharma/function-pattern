@@ -68,6 +68,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Recorder\TestRecord.cs" />
+    <Compile Include="Recorder\TestRecorder.cs" />
     <Compile Include="Testor.cs" />
   </ItemGroup>
   <ItemGroup>

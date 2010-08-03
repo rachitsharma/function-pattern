@@ -34,21 +34,20 @@ namespace FunctionPattern.Chain4Action
         static readonly MultiActionRecorder myRecorder = new MultiActionRecorder();
         ActionRecordCollection m_recordCollection = new ActionRecordCollection();
 
-        public MultiActionRecord()
-            : base(myRecorder)
-        {
-        }
-
         ActionRecord FindRecord(ActorId actorId)
         {
             return m_recordCollection.Single(record => record.RecorderId.Equals(actorId));
         }
 
-        protected override bool IsEmptyCore
+        public override bool IsEmpty
         {
             get
             {
                 return m_recordCollection.All(record => record.IsEmpty);
+            }
+            protected set
+            {
+                base.IsEmpty = value;
             }
         }
 
@@ -113,6 +112,11 @@ namespace FunctionPattern.Chain4Action
             }
 
             protected override ActionRecord GenerateEmptyRecordCore()
+            {
+                throw new NotImplementedException();
+            }
+
+            protected override void CutRecordCore()
             {
                 throw new NotImplementedException();
             }
