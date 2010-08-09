@@ -31,24 +31,11 @@ namespace Test
 {
     class Testor
     {
-        public void TestActorId()
-        {
-            var objId1 = ActorId.Generate<object>();
-            var objId2 = ActorId.Generate<object>();
-
-            if (objId1.Equals(objId2) == false || objId2.Equals(objId1) == false)
-            {
-                throw new NotImplementedException();
-            }
-
-            var intId1 = ActorId.Generate<int>();
-        }
-
         public void TestChainManager()
         {
             List<int> lst = new List<int>();
 
-            TestRecorder trr = new TestRecorder(lst);
+            RecorderTester trr = new RecorderTester(lst);
             ChainManager.IniParams p = new ChainManager.IniParams();
             p.RecordCollection.Add(trr);
             ChainManager cm = new ChainManager(p);

@@ -70,7 +70,7 @@ namespace FunctionPattern.Chain4Action
         #region Constructor
         public ChainManager(IniParams iniParams)
         {
-            RecorderCollection = iniParams.RecordCollection;
+            RecorderCollection = new ActionRecorderCollection(iniParams.RecordCollection.GetActionRecorderCollection());
             RecordCollection = new MultiActionRecordCollection();
             DontRecordWhenStatusError = iniParams.DontRecordWhenStatusError;
         }
@@ -202,23 +202,41 @@ namespace FunctionPattern.Chain4Action
         }
 
         #region Nested Class
-        public class ActionRecorderCollection : Collection<ActionRecorder>
+        public class ActionRecordableCollection : Collection<IActionRecordable>
         {
+            internal Collection<ActionRecorder> GetActionRecorderCollection()
+            {
+                ActionRecorderCollection collection = new ActionRecorderCollection();
+                this.Do(item => collection.Add(item.GetActonRecorder()));
+                return collection;
+            }
         }
 
         protected class MultiActionRecordCollection : Collection<MultiActionRecord>
         {
         }
 
+        protected class ActionRecorderCollection : Collection<ActionRecorder>
+        {
+            public ActionRecorderCollection()
+            {
+            }
+
+            public ActionRecorderCollection(IList<ActionRecorder> list)
+                : base(list)
+            {
+            }
+        }
+
         public sealed class IniParams
         {
-            public ActionRecorderCollection RecordCollection { private set; get; }
+            public ActionRecordableCollection RecordCollection { private set; get; }
 
             public bool DontRecordWhenStatusError { set; get; }
 
             public IniParams()
             {
-                RecordCollection = new ActionRecorderCollection();
+                RecordCollection = new ActionRecordableCollection();
             }
         }
         #endregion

@@ -36,15 +36,15 @@ namespace Sample
     public partial class MultiActorSampleForm : SampleForm
     {
         ChainManager m_chainManager;
-        TextEditRecorder m_textEdiorRecorder1;
-        TextEditRecorder m_textEdiorRecorder2;
+        TextEditor m_textEdiorRecorder1;
+        TextEditor m_textEdiorRecorder2;
 
         public MultiActorSampleForm()
         {
             InitializeComponent();
 
-            m_textEdiorRecorder1 = new TextEditRecorder(textBox1);
-            m_textEdiorRecorder2 = new TextEditRecorder(textBox2);
+            m_textEdiorRecorder1 = new TextEditor(textBox1);
+            m_textEdiorRecorder2 = new TextEditor(textBox2);
 
             ChainManager.IniParams param = new ChainManager.IniParams()
             {
