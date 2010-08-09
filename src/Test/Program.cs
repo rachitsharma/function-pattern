@@ -42,7 +42,6 @@ namespace Test
             ////Application.Run(new Form1());
 
             Testor testor = new Testor();
-            testor.TestActorId();
             testor.TestChainManager();
         }
     }

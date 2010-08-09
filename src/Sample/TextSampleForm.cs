@@ -36,13 +36,13 @@ namespace Sample
     public partial class TextSampleForm : SampleForm
     {
         ChainManager m_chainManager;
-        TextEditRecorder m_recorder;
+        TextEditor m_recorder;
 
         public TextSampleForm()
         {
             InitializeComponent();
 
-            m_recorder = new TextEditRecorder(textBox1);
+            m_recorder = new TextEditor(textBox1);
 
             ChainManager.IniParams iniParams = new ChainManager.IniParams();
             iniParams.RecordCollection.Add(m_recorder);

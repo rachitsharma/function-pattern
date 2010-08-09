@@ -34,9 +34,9 @@ namespace FunctionPattern.Chain4Action
         static readonly MultiActionRecorder myRecorder = new MultiActionRecorder();
         ActionRecordCollection m_recordCollection = new ActionRecordCollection();
 
-        ActionRecord FindRecord(ActorId actorId)
+        ActionRecord FindRecord(object id)
         {
-            return m_recordCollection.Single(record => record.RecorderId.Equals(actorId));
+            return m_recordCollection.Single(record => record.RecorderId.Equals(id));
         }
 
         public override bool IsEmpty
@@ -66,24 +66,24 @@ namespace FunctionPattern.Chain4Action
             m_recordCollection.Do(record => record.Undo());
         }
 
-        public bool HasRecord(ActorId actorId)
+        public bool HasRecord(object id)
         {
-            return m_recordCollection.Any(record => record.RecorderId.Equals(actorId));
+            return m_recordCollection.Any(record => record.RecorderId.Equals(id));
         }
 
-        public void ToEmpty(ActorId actorId)
+        public void ToEmpty(object id)
         {
-            FindRecord(actorId).ToEmpty();
+            FindRecord(id).ToEmpty();
         }
 
-        public void Undo(ActorId actorId)
+        public void Undo(object id)
         {
-            FindRecord(actorId).Undo();
+            FindRecord(id).Undo();
         }
 
-        public void Redo(ActorId actorId)
+        public void Redo(object id)
         {
-            FindRecord(actorId).Redo();
+            FindRecord(id).Redo();
         }
 
         public void AddActionRecord(ActionRecord record)
@@ -96,9 +96,11 @@ namespace FunctionPattern.Chain4Action
 
         class MultiActionRecorder : ActionRecorder
         {
+            static readonly Type s_myType = typeof(MultiActionRecorder);
+
             protected override object RecorderIdCore
             {
-                get { return ActorId.Generate<MultiActionRecorder>(); }
+                get { return s_myType; }
             }
 
             protected override ActionRecord StartRecordCore()

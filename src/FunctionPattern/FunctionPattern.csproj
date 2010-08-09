@@ -47,12 +47,11 @@
   <ItemGroup>
     <Compile Include="Chain4Action\ActionRecord.cs" />
     <Compile Include="Chain4Action\ActionRecorder.cs" />
-    <Compile Include="Chain4Action\ActorIdGenerator.cs" />
     <Compile Include="Chain4Action\ActStatus.cs" />
     <Compile Include="Chain4Action\ChainManager.cs" />
+    <Compile Include="Chain4Action\IActionRecordable.cs" />
     <Compile Include="Chain4Action\MultiActionRecord.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Chain4Action\ActorId.cs" />
     <Compile Include="Utilities\LinqHelper.cs" />
   </ItemGroup>
   <ItemGroup>

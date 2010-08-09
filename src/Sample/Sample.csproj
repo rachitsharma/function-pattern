@@ -61,7 +61,7 @@
       <DependentUpon>SampleViewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="TextEditRecord.cs" />
-    <Compile Include="TextEditRecorder.cs" />
+    <Compile Include="TextEditor.cs" />
     <Compile Include="TextSampleForm.cs">
       <SubType>Form</SubType>
     </Compile>
